@@ -8,60 +8,38 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-      background-color: black; /* Set the background color to black */
+      background-color: black;
     }
     
     pre {
       font-family: monospace;
-      color: white; /* Set the text color to white */
+      color: white;
     }
 
     .heart {
-      color: pink; /* Set the heart color to pink */
+      color: pink;
     }
   </style>
 </head>
 <body>
   <pre id="heart-container"></pre>
   <script>
-    function printHeart(size, text) {
-      const middle = Math.ceil(size / 2);
-      let heart = '';
-
-      for (let i = 1; i <= size; i++) {
-        let line = '';
-
-        for (let j = 1; j <= size * 2; j++) {
-          if ((i === 1 && j % 2 === 0) || (i === size && j % 2 === 1) || (i + j === size + 1) || (j - i === size - 1)) {
-            line += '*';
-          } else {
-            line += ' ';
-          }
-        }
-
-        if (i === middle) {
-          line = line.substr(0, middle - 1) + `<span class="heart">${text}</span>` + line.substr(middle + text.length);
-        }
-
-        heart += line + '\n';
-      }
-
+    function createHeart(text) {
+      const heart = `
+          *   * 
+       *        *
+     *            *
+   *${text} *
+    *        *
+      *    *
+        *
+      `;
       return heart;
     }
 
-    const maxHeartSize = 10;
     const text = "Your Text Here";
 
-    function animateHeart(size) {
-      document.getElementById('heart-container').innerHTML = '<pre>' + printHeart(size, text) + '</pre>';
-      setTimeout(() => {
-        if (size < maxHeartSize) {
-          animateHeart(size + 1);
-        }
-      }, 100);
-    }
-
-    animateHeart(1);
+    document.getElementById('heart-container').innerHTML = `<pre class="heart">${createHeart(text)}</pre>`;
   </script>
 </body>
 </html>
