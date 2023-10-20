@@ -10,10 +10,11 @@
       margin: 0;
       background-color: black;
       overflow: hidden;
+      position: relative;
     }
 
     .heart-container {
-      animation: heartExpand 5s ease-in-out;
+      animation: heartExpand 5s ease-in-out forwards;
       transform-origin: center;
     }
 
@@ -26,7 +27,7 @@
       }
     }
 
-    .text {
+ .text {
       color: white;
       animation: textFadeIn 5s ease-in forwards;
       animation-delay: 3s;
@@ -42,12 +43,32 @@
         opacity: 1;
       }
     }
+    .gif {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0; /* Initially, set the GIF to be hidden */
+    }
   </style>
 </head>
 <body>
+  <img src="firework.gif" class="gif" alt="Your GIF">
   <div class="heart-container">
     <img src="heart.png" alt="Heart Image">
   </div>
   <p class="text">Chúc mọi người 20/10 vui vẻ (OvO)v</p>
+
+  <script>
+    const gifElement = document.querySelector('.gif');
+    const animationDuration = 5000; // Duration of the heart animation in milliseconds
+
+    // Delay the GIF by the duration of the heart animation
+    setTimeout(() => {
+      gifElement.style.opacity = 1; // Set the opacity to 1 to make the GIF visible
+    }, animationDuration);
+  </script>
 </body>
 </html>
