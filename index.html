@@ -10,7 +10,7 @@
       margin: 0;
       overflow: hidden;
       position: relative;
-      background: url("https://www.youtube.com/watch?v=Ft1Z3pXwlPM") no-repeat center center fixed;
+      background: white;
       background-size: cover;
       opacity: 0.5; /* Set the opacity to 0.7 for 70% */
     }
@@ -29,7 +29,7 @@
     }
 
  .text {
-      color: white;
+      color: pink;
       animation: textFadeIn 5s ease-in forwards;
       animation-delay: 3s;
       opacity: 0;
@@ -58,7 +58,10 @@
   </style>
 </head>
 <body>
-
+  <audio autoplay>
+    <source src="sound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
   <img src="firework.gif" class="gif" alt="Your GIF">
   <div class="heart-container">
     <img src="heart.png" alt="Heart Image">
