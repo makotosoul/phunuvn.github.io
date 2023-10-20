@@ -8,9 +8,16 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
+      background-color: black; /* Set the background color to black */
     }
+    
     pre {
       font-family: monospace;
+      color: white; /* Set the text color to white */
+    }
+
+    .heart {
+      color: pink; /* Set the heart color to pink */
     }
   </style>
 </head>
@@ -33,7 +40,7 @@
         }
 
         if (i === middle) {
-          line = line.substr(0, middle - 1) + text + line.substr(middle + text.length);
+          line = line.substr(0, middle - 1) + `<span class="heart">${text}</span>` + line.substr(middle + text.length);
         }
 
         heart += line + '\n';
