@@ -2,6 +2,13 @@
 <html>
 <head>
   <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
     pre {
       font-family: monospace;
     }
@@ -39,7 +46,7 @@
     const text = "Your Text Here";
 
     function animateHeart(size) {
-      document.getElementById('heart-container').innerText = printHeart(size, text);
+      document.getElementById('heart-container').innerHTML = '<pre>' + printHeart(size, text) + '</pre>';
       setTimeout(() => {
         if (size < maxHeartSize) {
           animateHeart(size + 1);
