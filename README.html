@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    pre {
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <pre id="heart-container"></pre>
+  <script>
+    function printHeart(size, text) {
+      const middle = Math.ceil(size / 2);
+      let heart = '';
+
+      for (let i = 1; i <= size; i++) {
+        let line = '';
+
+        for (let j = 1; j <= size * 2; j++) {
+          if ((i === 1 && j % 2 === 0) || (i === size && j % 2 === 1) || (i + j === size + 1) || (j - i === size - 1)) {
+            line += '*';
+          } else {
+            line += ' ';
+          }
+        }
+
+        if (i === middle) {
+          line = line.substr(0, middle - 1) + text + line.substr(middle + text.length);
+        }
+
+        heart += line + '\n';
+      }
+
+      return heart;
+    }
+
+    const maxHeartSize = 10;
+    const text = "Your Text Here";
+
+    function animateHeart(size) {
+      document.getElementById('heart-container').innerText = printHeart(size, text);
+      setTimeout(() => {
+        if (size < maxHeartSize) {
+          animateHeart(size + 1);
+        }
+      }, 100);
+    }
+
+    animateHeart(1);
+  </script>
+</body>
+</html>
