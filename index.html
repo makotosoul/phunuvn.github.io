@@ -9,37 +9,44 @@
       min-height: 100vh;
       margin: 0;
       background-color: black;
-    }
-    
-    pre {
-      font-family: monospace;
-      color: white;
+      overflow: hidden;
     }
 
-    .heart {
-      color: pink;
+    .heart-container {
+      animation: heartExpand 5s ease-in-out;
+      transform-origin: center;
+    }
+
+    @keyframes heartExpand {
+      0% {
+        transform: scale(0.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .text {
+      color: white;
+      animation: textFadeIn 5s ease-in-out;
+      animation-delay: 3s;
+      opacity: 0;
+    }
+
+    @keyframes textFadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <pre id="heart-container"></pre>
-  <script>
-    function createHeart(text) {
-      const heart = `
-          *   * 
-       *        *
-     *            *
-   *${text} *
-    *        *
-      *    *
-        *
-      `;
-      return heart;
-    }
-
-    const text = "Your Text Here";
-
-    document.getElementById('heart-container').innerHTML = `<pre class="heart">${createHeart(text)}</pre>`;
-  </script>
+  <div class="heart-container">
+    <img src="heart.png" alt="Heart Image">
+  </div>
+  <p class="text">Your Text Here</p>
 </body>
 </html>
